@@ -4,9 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Json.Fastest
+namespace JShibo.Serialization.Csv
 {
-    public class Class1
+    public class CsvBinary
     {
+
     }
 }
