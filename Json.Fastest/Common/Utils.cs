@@ -4,6 +4,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Data;
+using System.Numerics;
 //using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -506,6 +507,15 @@ namespace JShibo.Serialization.Common
         }
 
         #endregion
+
+        public static void CopyString(string s)
+        {
+            //char[] c = s;
+            //Vector.ConditionalSelect
+            Vector<char> v = new Vector<char>();
+            Vector<int> vv = new Vector<int>();
+
+        }
 
         #region 拷贝相关
 

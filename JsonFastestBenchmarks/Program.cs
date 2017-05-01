@@ -18,7 +18,7 @@ namespace JsonFastestBenchmarks
             //Console.WriteLine(s);
             //ToJsonTests.Run();
             ToCsvTests.Run();
-
+            //FastBlockCopyTests.Run();
             Console.ReadLine();
             //JsonConvert.SerializeObject()
         }

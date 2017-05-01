@@ -23,10 +23,10 @@ namespace JShibo.Serialization
 
         internal void Serialize(Stream stream, object graph)
         {
-            int size = ShiboObjectBufferSerializer.GetSize(this, graph);
-            ObjectBuffer buffer = new ObjectBuffer(size);
-            Serializer(buffer, graph);
-            stream.Write(buffer.GetBuffer(), 0, buffer.position);
+            //int size = ShiboObjectBufferSerializer.GetSize(this, graph);
+            //ObjectBuffer buffer = new ObjectBuffer(size);
+            //Serializer(buffer, graph);
+            //stream.Write(buffer.GetBuffer(), 0, buffer.position);
         }
 
         public void Serialize(ObjectBuffer stream, object graph)
@@ -77,7 +77,7 @@ namespace JShibo.Serialization
 
     public class XmlStringContext : XmlContext<CsvString, CsvUstring, CsvStringSize>
     {
-        
+
 
     }
 
@@ -87,7 +87,7 @@ namespace JShibo.Serialization
 
     }
 
-    
+
 
 
 }

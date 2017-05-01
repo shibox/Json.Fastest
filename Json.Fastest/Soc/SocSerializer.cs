@@ -14,7 +14,8 @@ namespace JShibo.Serialization.Soc
 
         public static ObjectBufferContext Create(Type type)
         {
-            return ShiboObjectBufferSerializer.GetContext(type);
+            //return ShiboObjectBufferSerializer.GetContext(type);
+            return null;
         }
 
         public static ObjectStreamContext CreateStreamContext<T>()
@@ -24,7 +25,8 @@ namespace JShibo.Serialization.Soc
 
         public static ObjectStreamContext CreateStreamContext(Type type)
         {
-            return ShiboObjectStreamSerializer.GetContext(type);
+            //return ShiboObjectStreamSerializer.GetContext(type);
+            return null;
         }
     }
 }

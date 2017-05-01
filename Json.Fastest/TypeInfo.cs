@@ -22,12 +22,12 @@ namespace JShibo.Serialization
         //internal static Dictionary<Type, string[]> namesMap;
         #endregion
 
-        internal Type[] deTypes;
-        internal Serialize<Data> jsonTypeMap;
-        internal Serialize<Size> jsonTypeSizeMap;
-        internal Deserialize<Data> jsonDeTypeMap;
-        internal Info jsonTypes;
-        internal string[] namesMap;
+        //internal Type[] deTypes;
+        //internal Serialize<Data> jsonTypeMap;
+        //internal Serialize<Size> jsonTypeSizeMap;
+        //internal Deserialize<Data> jsonDeTypeMap;
+        //internal Info jsonTypes;
+        //internal string[] namesMap;
 
         public XType()
         { 

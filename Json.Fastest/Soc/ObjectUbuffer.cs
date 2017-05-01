@@ -1060,8 +1060,9 @@ namespace JShibo.Serialization.Soc
         public object ReadObject()
         {
             //return desers[curObj++](this);
-            object value = ShiboObjectBufferSerializer.Deserialize(this, desers[curObj++]);
-            return value;
+            //object value = ShiboObjectBufferSerializer.Deserialize(this, desers[curObj++]);
+            //return value;
+            return null;
         }
 
         #endregion

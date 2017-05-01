@@ -12,22 +12,43 @@ namespace JsonFastestBenchmarks
     {
         public static void Run()
         {
-            NormalClass n = new NormalClass();
-            n.X = 12;
-            n.Y = "78";
-            n.Z = 4.6;
-            n.V = 'c';
-
-            List<NormalClass> list = new List<NormalClass>();
-            list.Add(n);
-            list.Add(n);
-            list.Add(n);
-            list.Add(n);
-            
-
-            string s = CsvSerializer.ToCsv(list);
-            Console.WriteLine(s);
+            Array();
+            //List();
             
         }
+
+        public static void Array()
+        {
+            NormalClass item = new NormalClass();
+            item.X = 12;
+            item.Y = "78";
+            item.Z = 4.6;
+            item.V = 'c';
+            object[] value = new object[6];
+            for (int i = 0; i < value.Length; i++)
+                value[i] = item;
+
+            string s = CsvSerializer.ToCsv(value);
+            Console.WriteLine(s);
+        }
+
+        public static void List()
+        {
+            NormalClass item = new NormalClass();
+            item.X = 12;
+            item.Y = "78";
+            item.Z = 4.6;
+            item.V = 'c';
+
+            List<NormalClass> value = new List<NormalClass>();
+            value.Add(item);
+            value.Add(item);
+            value.Add(item);
+            value.Add(item);
+
+            string s = CsvSerializer.ToCsv(value);
+            Console.WriteLine(s);
+        }
+
     }
 }

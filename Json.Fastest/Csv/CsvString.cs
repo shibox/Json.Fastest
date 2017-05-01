@@ -26,11 +26,9 @@ namespace JShibo.Serialization.Csv
 
         #region 字段
 
-        internal string json = string.Empty;
         internal Type[] types;
         internal Serialize<CsvString>[] sers;
         internal int[] typeCounts;
-        //internal int[] nameCounts;
 
         internal string[] names = new string[0];
         internal char[] _buffer = null;
@@ -39,7 +37,6 @@ namespace JShibo.Serialization.Csv
         internal int currSer = 0;
         internal int maxDepth = 10;
         internal int curDepth = 0;
-        //internal bool isJsonBaseType = false;
         internal bool isRoot = true;
         /// <summary>
         /// 用于切换使用单引号还是双引号写入，该方式用于减少判断，而使用字段访问
@@ -66,6 +63,12 @@ namespace JShibo.Serialization.Csv
             set { maxDepth = value; }
         }
 
+        public SerializerSettings Sets
+        {
+            get { return sets; }
+            set { sets = value; }
+        }
+
         #endregion
 
         #region 构造函数
@@ -85,18 +88,7 @@ namespace JShibo.Serialization.Csv
         {
         }
 
-        public CsvString(ref char[] buffer)
-            : this(ref buffer, SerializerSettings.Default)
-        {
-        }
-
         public CsvString(char[] buffer, SerializerSettings set)
-        {
-            _buffer = buffer;
-            sets = set;
-        }
-
-        public CsvString(ref char[] buffer, SerializerSettings set)
         {
             _buffer = buffer;
             sets = set;
@@ -108,24 +100,12 @@ namespace JShibo.Serialization.Csv
             sets = set;
         }
 
-        public CsvString(string json)
-            : this(json, SerializerSettings.Default)
-        {
-        }
-
-        public CsvString(string json, SerializerSettings set)
-        {
-            this.json = json;
-            sets = set;
-        }
-
         internal CsvString(CsvString stream)
         {
             this._buffer = stream._buffer;
             this.position = stream.position;
             this.sets = stream.sets;
         }
-
 
         #endregion
 
@@ -263,19 +243,19 @@ namespace JShibo.Serialization.Csv
             return buffer;
         }
 
-        internal unsafe void WriteHeader(string[] headers)
+        internal unsafe void WriteHeader(List<string> headers)
         {
-            if (headers.Length <= 0)
+            if (headers.Count <= 0)
                 return;
             fixed (char* pdst = &_buffer[position])
             {
                 char* tdst = pdst;
-                for (int i = 0; i < headers.Length; i++)
+                for (int i = 0; i < headers.Count; i++)
                 {
                     string name = headers[i];
                     fixed (char* psrc= name)
                     {
-                        FastWriteName.WriteUnsafe(psrc, tdst, name.Length);
+                        FastWriteName.WriteUnsafe(psrc, tdst, name.Length * 2);
                         tdst += name.Length;
                         *tdst++ = Separator;
                         position += name.Length + 1;
@@ -293,6 +273,11 @@ namespace JShibo.Serialization.Csv
             this._buffer[position-1] = '\r';
             this._buffer[position] = '\n';
             position++;
+        }
+
+        internal void WriteNullLine(int n)
+        {
+
         }
 
         #endregion

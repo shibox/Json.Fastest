@@ -181,7 +181,7 @@ namespace JShibo.Serialization.Json
             {
                 char* tsrc = psrc, tdst = pdst;
                 *tdst++ = Quote;
-                FastWriteName.WriteUnsafe(tsrc, tdst, name.Length);
+                FastWriteName.WriteUnsafe(tsrc, tdst, name.Length*2);
                 tdst += name.Length;
                 *tdst++ = Quote;
                 *tdst++ = ':';
